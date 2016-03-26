@@ -2,6 +2,8 @@
 
 Subscribe-event is the easiest way to subscribe dom events in browser or node.js events.
 
+Live example: http://xnimorz.github.io/subscribe-event/
+
 #### Instal
 
 ```
