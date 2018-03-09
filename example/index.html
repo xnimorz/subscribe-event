@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Subscribe-event</title>
     <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
     <div class="page">
         <div class="fixed">
             <h4>Example:</h4>
-            <input class="x"/> : <input class="y"/>
+            <input class="x" /> :
+            <input class="y" />
             <div>
                 <button class="subscribe-mouse-move">Subscribe to mouse move</button>
                 <button class="unsubscribe-mouse-move" style="display: none">Unsubscribe</button>
             </div>
         </div>
-        <a href="https://github.com/xnimorz/subscribe-event"><span class='icon'></span>Fork me on github!</a><h2>Subscribe-event</h2>
-<p>Subscribe-event is the easiest way to subscribe dom events in browser or node.js events.</p>
-<h4><a id="Instal_4"></a>Instal</h4>
-<pre><code>npm <span class="hljs-operator"><span class="hljs-keyword">install</span> <span class="hljs-comment">--save subscribe-event</span>
+        <a href="https://github.com/xnimorz/subscribe-event">
+            <span class='icon'></span>Get more information from README on github</a>
+        <h2>Subscribe-event</h2>
+        <p>Subscribe-event is the easiest way to subscribe either dom events in browser or node.js events.</p>
+        <h4>
+            <a id="Instal_4"></a>Install</h4>
+        <pre><code>npm <span class="hljs-operator"><span class="hljs-keyword">install</span> <span class="hljs-comment">--save subscribe-event</span>
+</span></code></pre> Or:
+        <pre><code>yarn <span class="hljs-operator"><span class="hljs-keyword">add</span> <span class="hljs-comment">subscribe-event</span>
 </span></code></pre>
-<p>Library support es6, CommonJs, AMD modules</p>
-<h4><a id="Examples_12"></a>Examples</h4>
-<p>For example in browser:</p>
-<pre><code><span class="hljs-keyword">var</span> subscribe = <span class="hljs-built_in">require</span>(<span class="hljs-string">'subscribe-event'</span>);
+        <p>Library supports es6, CommonJs, AMD modules</p>
+        <h4>
+            <a id="Examples_12"></a>Examples</h4>
+        <p>In browser:</p>
+        <pre><code><span class="hljs-keyword">var</span> subscribe = <span class="hljs-built_in">require</span>(<span class="hljs-string">'subscribe-event'</span>);
 
 <span class="hljs-keyword">var</span> element = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.my-button'</span>);
 
@@ -35,8 +44,8 @@
 
 unsubscribe();
 </code></pre>
-<p>or</p>
-<pre><code><span class="hljs-keyword">var</span> subscribe = <span class="hljs-built_in">require</span>(<span class="hljs-string">'subscribe-event'</span>);
+        <p>or</p>
+        <pre><code><span class="hljs-keyword">var</span> subscribe = <span class="hljs-built_in">require</span>(<span class="hljs-string">'subscribe-event'</span>);
 
 <span class="hljs-keyword">var</span> unsubscribe = subscribe(<span class="hljs-built_in">document</span>, <span class="hljs-string">'scroll'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
     <span class="hljs-built_in">console</span>.log(e);
@@ -46,12 +55,12 @@ unsubscribe();
 
 unsubscribe();
 </code></pre>
-<p>This library alse support old ie (attachEvent/detachEvent).</p>
-<p>It’s useful for React:</p>
-<pre><code><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+        <p>This library alse support old ie (attachEvent/detachEvent).</p>
+        <p>It’s useful for React:</p>
+        <pre><code><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> subscribe <span class="hljs-keyword">from</span> <span class="hljs-string">'subscribe-event'</span>;
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAmazingComponent</span> <span class="hljs-keyword">extends</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAmazingComponent</span> <span class="hljs-keyword">extends Component {</span>
     <span class="hljs-title">componentDidMount</span>() </span>{
         <span class="hljs-keyword">this</span>.unsubscribeScroll = subscribe(<span class="hljs-built_in">document</span>, <span class="hljs-string">'scroll'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
             <span class="hljs-comment">// do some job</span>
@@ -69,10 +78,10 @@ unsubscribe();
             <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
         )</span>;
     }
-});
+}
 </code></pre>
-<p>You can define your custom event subscribe function:</p>
-<pre><code><span class="hljs-keyword">import</span> subscribe <span class="hljs-keyword">from</span> 'subscribe-event';
+        <p>You can define your custom event subscribe function:</p>
+        <pre><code><span class="hljs-keyword">import</span> subscribe <span class="hljs-keyword">from</span> 'subscribe-event';
 
 <span class="hljs-keyword">var</span> obj: {
     eventSubscribe: function() <span class="hljs-decorator">{...}</span>,
@@ -88,8 +97,13 @@ unsubscribe();
 customUnsubscribe();
 
 </code></pre>
-<p>By default subscribe-event work with: <code>addEventListener</code>, <code>detachEvent</code>, <code>on</code></p>
+        <p>By default subscribe-event work with:
+            <code>addEventListener</code>,
+            <code>detachEvent</code>,
+            <code>on</code>
+        </p>
     </div>
     <script src="example.bundle.js"></script>
 </body>
+
 </html>
