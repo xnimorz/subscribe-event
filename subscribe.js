@@ -1,40 +1,28 @@
 !(function() {
   "use strict";
 
-  function subscribeEvent(
-    element,
-    event,
-    handler,
-    options,
-    addSubscription,
-    removeSubscription
-  ) {
-    var unsubscribeFunction = removeSubscription;
+  // Basic subscribe function both browser events or node.js events
+  function subscribeEvent(element, event, handler, options) {
+    var unsubscribeFunctionName = "removeEventListener";
     var unsubscribe = function() {
-      element[unsubscribeFunction](event, handler);
+      element[unsubscribeFunctionName](event, handler);
     };
-
-    if (addSubscription) {
-      element[addSubscription](event, handler, options);
-      return unsubscribe;
-    }
 
     if (element.addEventListener) {
       element.addEventListener(event, handler, options);
-      unsubscribeFunction = "removeEventListener";
       return unsubscribe;
     }
 
     if (element.attachEvent) {
       event = "on" + event;
       element.attachEvent(event, handler);
-      unsubscribeFunction = "detachEvent";
+      unsubscribeFunctionName = "detachEvent";
       return unsubscribe;
     }
 
     if (element.on) {
       element.on(event, handler);
-      unsubscribeFunction = "off";
+      unsubscribeFunctionName = "off";
       return unsubscribe;
     }
   }
@@ -43,29 +31,27 @@
     return subscribeEvent(element, event, handler, options);
   }
 
+  // define your own subscribe functions
   subscribe.define = function(addSubscription, removeSubscription) {
     return function(element, event, handler, options) {
-      return subscribeEvent(
-        element,
-        event,
-        handler,
-        options,
-        addSubscription,
-        removeSubscription
-      );
+      var unsubscribe = function() {
+        element[removeSubscription](event, handler);
+      };
+
+      element[addSubscription](event, handler, options);
+      return unsubscribe;
     };
   };
 
-  (function(subscribe) {
-    if (typeof exports === "object") {
-      // CommonJS
-      module.exports = subscribe;
-    } else if (typeof define === "function" && define.amd) {
-      // AMD. anonymous module
-      define(subscribe);
-    } else {
-      // Global scope
-      global.subscribeEvent = subscribe;
-    }
-  })(subscribe);
+  // umd
+  if (typeof exports === "object") {
+    // CommonJS
+    module.exports = subscribe;
+  } else if (typeof define === "function" && define.amd) {
+    // AMD. anonymous module
+    define(subscribe);
+  } else {
+    // Global scope
+    global.subscribeEvent = subscribe;
+  }
 })();
