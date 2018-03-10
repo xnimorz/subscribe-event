@@ -2,7 +2,7 @@
   "use strict";
 
   // Basic subscribe function both browser events or node.js events
-  function subscribeEvent(element, event, handler, options) {
+  function subscribe(element, event, handler, options) {
     var unsubscribeFunctionName = "removeEventListener";
     var unsubscribe = function() {
       element[unsubscribeFunctionName](event, handler);
@@ -25,10 +25,6 @@
       unsubscribeFunctionName = "off";
       return unsubscribe;
     }
-  }
-
-  function subscribe(element, event, handler, options) {
-    return subscribeEvent(element, event, handler, options);
   }
 
   // define your own subscribe functions
