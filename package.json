@@ -1,6 +1,6 @@
 {
   "name": "subscribe-event",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description":
     "Easiest way to subscribe and unsubscribe browser / node events",
   "main": "subscribe.js",
@@ -9,9 +9,13 @@
     "test": "mocha ./tests/tests",
     "example": "webpack --config ./example/webpack.config.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xnimorz/subscribe-event.git"
+  },
   "size-limit": [
     {
-      "limit": "300 bytes",
+      "limit": "150 bytes",
       "path": "subscribe.js"
     }
   ],
